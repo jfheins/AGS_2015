@@ -1,0 +1,17 @@
+﻿<Window x:Class="Prolog.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="433" Width="659">
+	<Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="*"></RowDefinition>
+			<RowDefinition Height="Auto"></RowDefinition>
+			<RowDefinition Height="*"></RowDefinition>
+		</Grid.RowDefinitions>
+		<Button Content="Entschlüsseln" HorizontalAlignment="Left" Margin="10,10,0,10" Grid.Row="1" VerticalAlignment="Top" Width="100" Height="40" Click="Decode_Click" />
+		<Button Content="Verschlüsseln" HorizontalAlignment="Left" Margin="200,10,0,10" Grid.Row="1" VerticalAlignment="Top" Width="100" Height="40" Click="Encode_Click"  />
+		<TextBox x:Name="CiphertextTxt" Grid.Row="0" HorizontalAlignment="Stretch" Margin="10" TextWrapping="Wrap" Text="412312EF0906FF-D41E12F2050005FDF9FC07 C6FE0104" VerticalAlignment="Stretch"/>
+		<TextBox x:Name="PlaintextTxt" Grid.Row="2" HorizontalAlignment="Stretch" Margin="10" TextWrapping="Wrap" Text="Advents-Gewinnspiel 2015" VerticalAlignment="Stretch"/>
+
+	</Grid>
+</Window>
