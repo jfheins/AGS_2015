@@ -44,7 +44,10 @@ namespace Prolog
 					{
 						var charcode = byte.Parse("" + lastchar + chr, NumberStyles.HexNumber);
 						charcode = unchecked((byte)(charcode + lastcharcode));
-						plaintext.Append((char) charcode);
+
+						var plainChar = Encoding.GetEncoding(@"iso-8859-15").GetChars(new[] {charcode})[0];
+						plaintext.Append(plainChar);
+
 						lastcharcode = charcode;
 						lastchar = null; // Reset
 						continue;
@@ -75,14 +78,14 @@ namespace Prolog
 			{
 				if (char.IsLetterOrDigit(chr))
 				{
-					var charcode = unchecked((byte)(chr - lastcharcode));
-					hex.AppendFormat("{0:X2}", charcode);
-					lastcharcode = (byte)chr;
+					var charcode = Encoding.GetEncoding(@"iso-8859-15").GetBytes(new[] { chr })[0];
+
+					hex.AppendFormat("{0:X2}", unchecked((byte)(charcode - lastcharcode)));
+					lastcharcode = charcode;
 				}
 				else
 				{
 					hex.Append(chr);
-					lastcharcode = 0;
 				}
 			}
 
