@@ -21,6 +21,8 @@ namespace Prolog
 	/// </summary>
 	public partial class MainWindow : Window
 	{
+		private static string hexchars = "0123456789ABCDEF";
+
 		public MainWindow()
 		{
 			InitializeComponent();
@@ -28,7 +30,38 @@ namespace Prolog
 
 		private void Decode_Click(object sender, RoutedEventArgs e)
 		{
+			var ciphertext = CiphertextTxt.Text;
+			var plaintext = new StringBuilder();
 
+			char? lastchar = null;
+			byte lastcharcode = 0;
+
+			foreach (var chr in ciphertext)
+			{
+				if (lastchar != null) // This must be the second nibble
+				{
+					if (hexchars.Contains(chr))
+					{
+						var charcode = byte.Parse("" + lastchar + chr, NumberStyles.HexNumber);
+						charcode = unchecked((byte)(charcode + lastcharcode));
+						plaintext.Append((char) charcode);
+						lastcharcode = charcode;
+						lastchar = null; // Reset
+						continue;
+					}
+					lastchar = null; // Error in input
+				}
+				if (hexchars.Contains(chr)) // First nibble
+				{
+					lastchar = chr;
+				}
+				else // Punctuation
+				{
+					plaintext.Append(chr);
+				}
+			}
+
+			PlaintextTxt.Text = plaintext.ToString();
 		}
 
 		private void Encode_Click(object sender, RoutedEventArgs e)
@@ -42,7 +75,7 @@ namespace Prolog
 			{
 				if (char.IsLetterOrDigit(chr))
 				{
-					byte charcode = unchecked((byte)(chr - lastcharcode));
+					var charcode = unchecked((byte)(chr - lastcharcode));
 					hex.AppendFormat("{0:X2}", charcode);
 					lastcharcode = (byte)chr;
 				}

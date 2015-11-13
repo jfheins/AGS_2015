@@ -10,8 +10,8 @@
 		</Grid.RowDefinitions>
 		<Button Content="Entschlüsseln" HorizontalAlignment="Left" Margin="10,10,0,10" Grid.Row="1" VerticalAlignment="Top" Width="100" Height="40" Click="Decode_Click" />
 		<Button Content="Verschlüsseln" HorizontalAlignment="Left" Margin="200,10,0,10" Grid.Row="1" VerticalAlignment="Top" Width="100" Height="40" Click="Encode_Click"  />
-		<TextBox x:Name="CiphertextTxt" Grid.Row="0" HorizontalAlignment="Stretch" Margin="10" TextWrapping="Wrap" Text="412312EF0906FF-D41E12F2050005FDF9FC07 C6FE0104" VerticalAlignment="Stretch"/>
-		<TextBox x:Name="PlaintextTxt" Grid.Row="2" HorizontalAlignment="Stretch" Margin="10" TextWrapping="Wrap" Text="Advents-Gewinnspiel 2015" VerticalAlignment="Stretch"/>
+		<TextBox x:Name="CiphertextTxt" Grid.Row="0" HorizontalAlignment="Stretch" Margin="10" TextWrapping="Wrap" Text="412312EF0906FF-D41E12F2050005FDF9FC07 C6FE0104" VerticalAlignment="Stretch" VerticalScrollBarVisibility="Visible" AcceptsReturn="True"/>
+		<TextBox x:Name="PlaintextTxt" Grid.Row="2" HorizontalAlignment="Stretch" Margin="10" TextWrapping="Wrap" Text="Advents-Gewinnspiel 2015" VerticalAlignment="Stretch" VerticalScrollBarVisibility="Visible" AcceptsReturn="True"/>
 
 	</Grid>
 </Window>
